@@ -33,7 +33,7 @@ namespace CosturaPlugin
 			ModuleDefinition module = asm.MainModule;
 			string assemblyPath = Path.GetDirectoryName(node.LoadedAssembly.FileName);
 			foreach (var resource in module.Resources) {
-				if (! resource.Name.StartsWith("costura.") && ! resource.Name.EndsWith(".dll.compressed")) {
+				if (! resource.Name.StartsWith("costura.") || ! resource.Name.EndsWith(".dll.compressed")) {
 					continue;
 				}
 				string fileName = assemblyPath + "/" + resource.Name.Substring(8, resource.Name.LastIndexOf(".compressed") - 8);
